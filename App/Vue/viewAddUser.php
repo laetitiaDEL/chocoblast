@@ -6,6 +6,21 @@
     <title>Ajouter un Utilisateur</title>
 </head>
 <body>
-    <h1>Ajouter un Utilisateur</h1>
+    <form action="" method="post">
+        <label for="nom_utilisateur">Saisir votre nom : </label>
+        <input type="text" name="nom_utilisateur">
+        <label for="prenom_utilisateur">Saisir votre prenom : </label>
+        <input type="text" name="prenom_utilisateur">
+        <label for="mail_utilisateur">Saisir votre mail : </label>
+        <input type="email" name="mail_utilisateur">
+        <label for="password_utilisateur">Saisir votre mot de passe : </label>
+        <input type="password" name="password_utilisateur">
+        <input type="submit" value="Ajouter" name="submit">
+    </form>
+    <div id="error">
+        <?php
+            echo $msg;
+        ?>
+    </div>
 </body>
 </html>

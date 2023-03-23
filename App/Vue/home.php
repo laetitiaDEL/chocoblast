@@ -9,3 +9,10 @@
     <h1>Bienvenue sur Chocoblast</h1>
 </body>
 </html>
+
+
+<?php
+/*
+phpinfo();
+*/
+?>
