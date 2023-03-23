@@ -6,7 +6,7 @@
     class UserController extends Utilisateur{
 
         //fonction qui gère l'ajout d'utilisateur en BDD
-        public function insertUser(){
+        public function insertUser():void{
             //variable pour stocker les messages d'erreur
             $msg = "";
             /* LOGIQUE */

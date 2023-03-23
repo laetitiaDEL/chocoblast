@@ -17,7 +17,9 @@
         //Constructeur
         public function __construct(){
             //instancier un objet roles à la création
-            //$this->roles = new Roles('utilisateur');
+            $this->roles = new Roles();
+            $this->roles->setNomRoles('user');
+            $this->roles->setIdRoles(1);
         }
 
         //Getters et setters
@@ -62,15 +64,19 @@
                 $prenom = $this->prenom_utilisateur;
                 $mail = $this->mail_utilisateur;
                 $password = $this->password_utilisateur;
+                //récupération du rôle
+                $id = $this->roles->getIdRoles();
 
                 //préparer la requête
-                $req = $this->connexion()->prepare('INSERT INTO utilisateur(nom_utilisateur, prenom_utilisateur, mail_utilisateur, password_utilisateur) VALUES(?,?,?,?)'); 
+                $req = $this->connexion()->prepare('INSERT INTO utilisateur(nom_utilisateur, prenom_utilisateur, mail_utilisateur, password_utilisateur, id_roles) VALUES(?,?,?,?,?)'); 
 
                 //binding des paramètres
                 $req->bindParam(1, $nom, \PDO::PARAM_STR);
                 $req->bindParam(2, $prenom, \PDO::PARAM_STR);
                 $req->bindParam(3, $mail, \PDO::PARAM_STR);
                 $req->bindParam(4, $password, \PDO::PARAM_STR);
+                //bind du rôle
+                $req->bindParam(5, $id, \PDO::PARAM_INT);
 
                 //exécuter la requête
                 $req->execute();

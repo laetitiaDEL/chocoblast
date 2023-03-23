@@ -2,12 +2,13 @@
 
 use App\Controller\RolesController;
 use App\Controller\UserController;
+
     //attention à l'ordre des includes, en fonction de qui dépend de qui (qui extend qui)
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
     include './App/Model/Roles.php';
-    include './App/Model/Utilisateur.php';
     include './App/Controller/RolesController.php';
+    include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
 
     //Analyse de l'URL avec parse_url() et retourne ses composants
