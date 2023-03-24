@@ -1,7 +1,9 @@
 <?php
+    //démarrage de la session
+    session_start();
 
-use App\Controller\RolesController;
-use App\Controller\UserController;
+    use App\Controller\RolesController;
+    use App\Controller\UserController;
 
     //attention à l'ordre des includes, en fonction de qui dépend de qui (qui extend qui)
     include './App/Utils/BddConnect.php';
@@ -31,6 +33,10 @@ use App\Controller\UserController;
         case '/chocoblast/rolesAdd':
             //appel de la fonction insertRoles
             $rolesController->insertRoles();
+            break;
+        case '/chocoblast/connexion':
+            //appel de la fonction insertRoles
+            $userController->connexionUser();
             break;
         default:
             include './App/Vue/error.php';

@@ -18,7 +18,6 @@
         public function __construct(){
             //instancier un objet roles à la création
             $this->roles = new Roles();
-            $this->roles->setNomRoles('user');
             $this->roles->setIdRoles(1);
         }
 
