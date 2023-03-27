@@ -4,6 +4,7 @@
 
     use App\Controller\RolesController;
     use App\Controller\UserController;
+    use App\Controller\ChocoblastController;
 
     //attention à l'ordre des includes, en fonction de qui dépend de qui (qui extend qui)
     include './App/Utils/BddConnect.php';
@@ -12,6 +13,8 @@
     include './App/Controller/RolesController.php';
     include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
+    include './App/Model/Chocoblast.php';
+    include './App/Controller/ChocoblastController.php';
 
     //Analyse de l'URL avec parse_url() et retourne ses composants
     $url = parse_url($_SERVER['REQUEST_URI']);
@@ -20,6 +23,7 @@
     //instance des controllers
     $userController = new UserController();
     $rolesController = new RolesController();
+    $chocoblastController = new ChocoblastController();
 
     //routeur
     switch ($path) {
@@ -34,9 +38,19 @@
             //appel de la fonction insertRoles
             $rolesController->insertRoles();
             break;
+        case '/chocoblast/chocoblastAdd':
+            //appel de la fonction insertChocoblast
+            $chocoblastController->insertChocoblast();
+            break;
+        case '/chocoblast/chocoblastAll':
+            //appel de la fonction 
+            $chocoblastController->showAllChocoblast();
+            break;
         case '/chocoblast/connexion':
-            //appel de la fonction insertRoles
             $userController->connexionUser();
+            break;
+        case '/chocoblast/deconnexion':
+            $userController->deconnexionUser();
             break;
         default:
             include './App/Vue/error.php';

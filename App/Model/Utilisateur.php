@@ -1,7 +1,7 @@
 <?php
-    namespace App\Model;
-    use App\Utils\BddConnect;
-    use App\Model\Roles;
+namespace App\Model;
+use App\Utils\BddConnect;
+use App\Model\Roles;
 
     class Utilisateur extends BddConnect{
         //Attributs
@@ -38,6 +38,9 @@
             return $this->password_utilisateur;
         }
 
+        public function setIdUtilisateur(? int $id):void{
+            $this->id_utilisateur = $id;
+        }
         public function setNomUtilisateur(? string $name):void{
             $this->nom_utilisateur = $name;
         }
@@ -106,6 +109,21 @@
             
         }
 
+        //Méthode qui retourne tous les utilisateurs
+        public function getUserAll():?array{
+            try {
+                $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur, mail_utilisateur, image_utilisateur FROM utilisateur');
+                $req->execute();
+                $data = $req->fetchAll(\PDO::FETCH_OBJ);
+                return $data;
+            } catch (\Exception $e) {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
+        public function __toString():string{
+            return $this->nom_utilisateur;
+        }
     }
 
 

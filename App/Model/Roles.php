@@ -1,6 +1,6 @@
 <?php
-    namespace App\Model;
-    use App\Utils\BddConnect;
+namespace App\Model;
+use App\Utils\BddConnect;
 
     class Roles extends BddConnect {
         //Attributs
@@ -66,6 +66,10 @@
                 }catch (\Exception $e){
                     die('Erreur : '.$e->getMessage());
                 }
+            }
+
+            public function __toString():string{
+                return $this->nom_roles;
             }
         }
 

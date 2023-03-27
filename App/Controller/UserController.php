@@ -87,5 +87,10 @@
             //importer la vue
             include './App/Vue/viewConnexion.php';
         }
+
+        public function deconnexionUser(){
+            session_destroy();
+            header('Location: ./');
+        }
     }
 ?>
